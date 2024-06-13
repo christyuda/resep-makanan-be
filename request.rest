@@ -1,0 +1,7 @@
+###
+# register
+POST http://127.0.0.1:3000/register
+
+###
+# login
+POST http://127.0.0.1:3000/login
