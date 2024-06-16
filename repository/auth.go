@@ -61,36 +61,18 @@ func GetUserById(db *gorm.DB, userID uint) (*model.Users, error) {
 	return &user, nil
 }
 
-// func GetRoleById(db *gorm.DB, roleID int) (*model.Roles, error) {
-// 	var role model.Roles
-// 	result := db.First(&role, roleID)
-// 	if result.Error != nil {
-// 		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
-// 			return nil, nil
-// 		}
-// 		return nil, result.Error
-// 	}
-// 	return &role, nil
-// }
-
-// GetUserByRoleId retrieves a user by their role ID. It returns user data or an error.
-func GetUserByRoleId(db *gorm.DB, IdRole int) (*model.Users, error) {
+func GetUserDataById(db *gorm.DB, userID uint) (*model.Users, error) {
 	var user model.Users
-	// Fetch only the necessary fields from the Users table based on the role ID
-	result := db.Select("id_user", "id_role", "nama", "username", "email").Where("id_role = ?", IdRole).First(&user)
-
+	result := db.Where("id_user = ?", userID).First(&user)
 	if result.Error != nil {
 		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
-			// No user found with the specified role ID, return nil without an error
 			return nil, nil
 		}
-		// Return with an error if it's other than not found
 		return nil, result.Error
 	}
-
-	// Return user data successfully
 	return &user, nil
 }
+
 
 func GenerateToken(user *model.Users) (string, error) {
 	claims := &model.JWTClaims{
