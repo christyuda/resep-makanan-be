@@ -1,7 +1,5 @@
-###
-# register
-POST http://127.0.0.1:3000/register
-
-###
-# login
-POST http://127.0.0.1:3000/login
+POST http://localhost:3000/api/auth/login
+body: {
+    "email": "johndoe@example.com",
+    "password": "password123"
+    }
