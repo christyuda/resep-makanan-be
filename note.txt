@@ -1,0 +1,62 @@
+const express = require('express');
+const connectDB = require('./config/db');
+require('dotenv').config();
+const authRoutes = require('./routes/authRoutes.js');
+const productRoutes = require('./routes/productRoutes.js');
+const cartRoutes = require('./routes/cartRoutes.js');
+
+
+const app = express();
+app.use(express.json());
+
+// Connect to MongoDB
+connectDB();
+
+app.use('/api/auth', authRoutes);
+app.use('/api/product', productRoutes);
+app.use('/api/cart', cartRoutes);
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+
+buat gambar
+data : {
+filename : nama filenya
+content: stringbase
+ekstensi:jenis
+}
+
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+
+const app = express();
+const port = 3000;
+const imagesDir = path.join(__dirname, 'images');
+
+// Middleware untuk menyajikan file statis
+app.use(express.static('images'));
+
+// Route untuk mendapatkan daftar semua gambar
+app.get('/images', (req, res) => {
+    fs.readdir(imagesDir, (err, files) => {
+        if (err) {
+            return res.status(500).send('Error reading directory');
+        }
+        res.
+
+--synchronized database
+  (async () => {
+    try {
+        console.log('Database connected....');
+        // Sinkronisasi model User ke database
+        await MetodePembayaran.init();
+        console.log('User model synchronized.');
+    } catch (error) {
+        console.error('Error: ' + error);
+    }
+})();
